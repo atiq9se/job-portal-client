@@ -1,24 +1,36 @@
 
+import { FaLocationDot } from "react-icons/fa6";
 
 const HotJobsCard = ({ job }) => {
     const { title, company, company_logo, requirements, description, location, salaryRange } = job;
 
     return (
         <div className="card bg-base-100 shadow-xl">
-            <figure>
-                <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-            </figure>
+            <div className="flex gap-2 m-2">
+                <figure>
+                    <img className="w-16"
+                        src={company_logo}
+                        alt="Shoes" />
+                </figure>
+                <div>
+                    <h4 className="text-2xl">{company}</h4>
+                    <p className="flex gap-2 items-center"><FaLocationDot /> {location}</p>
+                </div>
+            </div>
             <div className="card-body">
                 <h2 className="card-title">
-                    Shoes!
+                    {title}
                     <div className="badge badge-secondary">NEW</div>
                 </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Fashion</div>
-                    <div className="badge badge-outline">Products</div>
+                <p>{description}</p>
+                <div className="flex gap-2 flex-wrap">
+                    {
+                        requirements.map(skill=><p className="border rounded-lg px-2 hover:text-purple-600 ">{skill}</p>)
+                    }
+                </div>
+                <div className="card-actions justify-end items-center">
+                    <p className="flex items-center">$ {salaryRange.min}-{salaryRange.max} {salaryRange.currency}</p>
+                    <button className="btn ">Apply</button>
                 </div>
             </div>
         </div>
