@@ -8,7 +8,7 @@ const JobDetails = () => {
             <h2>Job details for {title}</h2>
             <p>Apply for : {company}</p>
             <p>Deadline: {deadline}</p>
-            <Link to='/jobApply/:id'><button className="btn btn-secondary">Apply Now</button></Link>
+            <Link to={`/jobApply/${_id}`}><button className="btn btn-secondary">Apply Now</button></Link>
             
         </div>
     );
