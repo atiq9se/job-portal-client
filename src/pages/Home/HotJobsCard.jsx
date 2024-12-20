@@ -1,8 +1,9 @@
 
 import { FaLocationDot } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const HotJobsCard = ({ job }) => {
-    const { title, company, company_logo, requirements, description, location, salaryRange } = job;
+    const { _id, title, company, company_logo, requirements, description, location, salaryRange } = job;
 
     return (
         <div className="card bg-base-100 shadow-xl">
@@ -25,12 +26,13 @@ const HotJobsCard = ({ job }) => {
                 <p>{description}</p>
                 <div className="flex gap-2 flex-wrap">
                     {
-                        requirements.map(skill=><p className="border rounded-lg px-2 hover:text-purple-600 ">{skill}</p>)
+                        requirements.map((skill, index)=><p className="border rounded-lg px-2 hover:text-purple-600" key={index}>{skill}</p>)
                     }
                 </div>
                 <div className="card-actions justify-end items-center">
                     <p className="flex items-center">$ {salaryRange.min}-{salaryRange.max} {salaryRange.currency}</p>
-                    <button className="btn ">Apply</button>
+                    <Link to={`jobs/${_id}`}><button className="btn ">Apply</button></Link>
+                    
                 </div>
             </div>
         </div>
